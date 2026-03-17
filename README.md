@@ -1,4 +1,8 @@
 # Task 1
+#Test Store
+https://quickstart-a356df16.myshopify.com/
+password: aaronmarty
+
 # Dynamic Cart Upsell Component
 
 A high-performance, native Shopify upsell component built specifically for the **Dawn theme**. This project utilizes the Shopify Product Recommendations API to suggest items based on the first product in the cart, featuring a custom AJAX implementation to handle Dawn's dynamic drawer rendering.
