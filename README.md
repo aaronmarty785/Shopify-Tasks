@@ -1,6 +1,6 @@
 # Task 1
-# Test Store
-https://quickstart-a356df16.myshopify.com/
+## Test Store
+https://quickstart-a356df16.myshopify.com
 password: aaronmarty
 
 # Dynamic Cart Upsell Component
