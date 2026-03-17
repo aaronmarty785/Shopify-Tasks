@@ -73,7 +73,7 @@ password: aaronmarty
 {% endif %}
 ```
 
-**Add this before drawer footer inside cart-drawer.liquid
+- Add this before drawer footer inside cart-drawer.liquid
 
 ```liquid
 <script>
@@ -85,4 +85,4 @@ password: aaronmarty
 </script>
 ```
 
-**Add this before </body> inside theme.liquid
+- Add this before </body> inside theme.liquid
