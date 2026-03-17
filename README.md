@@ -1,5 +1,5 @@
 # Task 1
-#Test Store
+# Test Store
 https://quickstart-a356df16.myshopify.com/
 password: aaronmarty
 
