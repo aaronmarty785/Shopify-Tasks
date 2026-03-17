@@ -1,0 +1,37 @@
+{% comment %}
+  Usage: {% render 'cart-upsell' %}
+{% endcomment %}
+
+{%- if cart != empty -%}
+  {%- assign anchor_product = cart.items.first.product -%}
+  
+  <div class="cart-upsell" 
+       id="cart-upsell" 
+       data-anchor-id="{{ anchor_product.id }}"
+       data-url="{{ routes.product_recommendations_url }}">
+    
+    <h2 class="cart-upsell__title h4">You might also like</h2>
+    <div class="cart-upsell__grid" id="upsell-output">
+      {% comment %} JS will inject content here {% endcomment %}
+      <div class="loading-overlay__spinner">
+        <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<style>
+  .cart-upsell { margin-top: 2rem; border-top: 0.1rem solid rgba(var(--color-foreground), 0.08); padding-top: 2rem; }
+  .cart-upsell__title { margin-bottom: 1.5rem; }
+  .cart-upsell__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .upsell-card { display: flex; flex-direction: column; gap: 0.5rem; }
+  .upsell-card img { width: 100%; height: auto; border-radius: var(--media-radius); aspect-ratio: 1/1; object-fit: cover; }
+  .upsell-card__info { display: flex; flex-direction: column; gap: 0.2rem; }
+  .upsell-card__title { font-size: 1.3rem; margin: 0; text-decoration: none; color: rgb(var(--color-foreground)); }
+  .upsell-card__price { font-size: 1.2rem; color: rgba(var(--color-foreground), 0.75); }
+  .upsell-card__button { 
+    cursor: pointer; padding: 0.8rem; border: 0.1rem solid rgba(var(--color-foreground), 0.1); 
+    background: transparent; font-size: 1.1rem; letter-spacing: 0.1rem; transition: 0.3s;
+  }
+  .upsell-card__button:hover { background: rgb(var(--color-foreground)); color: rgb(var(--color-background)); }
+</style>
