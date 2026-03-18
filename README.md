@@ -36,3 +36,53 @@ A high-performance, native Shopify upsell component built specifically for the *
    ```liquid
     {% render 'cart-upsell' %}
     <script src="{{ 'cart-upsell.js' | asset_url }}" defer="defer"></script>
+
+# Task 2
+## Test Store
+https://gift-with-purchase-2.myshopify.com
+password: aaronmarty
+
+## Installation
+```liquid
+   {% if cart.total_price >= 100 %}
+  <div id="dawn-gwp-section">
+    {% assign gift_item = nil %}
+ 
+    {% for item in cart.items %}
+      {% if settings.gwp_product and item.variant_id == settings.gwp_product.selected_or_first_available_variant.id %}
+        {% assign gift_item = item %}
+      {% endif %}
+    {% endfor %}
+ 
+    {% if gift_item %}
+      <div class="gwp-item-display">
+        <img src="{{ gift_item.image | image_url: width: 100 }}" alt="">
+        
+        <div>
+          <span>🎁 FREE GIFT: {{ gift_item.product.title }}</span>
+          <p>Quantity: {{ gift_item.quantity }} (Limit 1)</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+ 
+{% else %}
+ 
+  
+ 
+{% endif %}
+```
+
+- Add this before drawer footer inside cart-drawer.liquid
+
+```liquid
+<script>
+  window.GWP_CONFIG = {
+    enabled: {{ settings.gwp_enabled | json }},
+    variantId: {% if settings.gwp_product %}{{ settings.gwp_product.selected_or_first_available_variant.id | json }}{% else %}null{% endif %},
+    threshold: {{ settings.gwp_threshold | times: 100 | json }}
+  };
+</script>
+```
+
+- Add this before </body> inside theme.liquid
